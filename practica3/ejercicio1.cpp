@@ -2,6 +2,37 @@
 #include <vector>
 using namespace std;
 
+class Usuario {
+    private:
+        int opcion;
+    public:
+        Usuario(int op) {
+            opcion = op;
+        }
+        int getOpcion() {
+            return opcion;
+        }
+        int setOpcion(int op) {
+            if (1 <= opcion<= 2){
+                return opcion;
+            }
+            else {
+                cout << "Opción inválida. Intente de nuevo." << endl;
+            }
+        }
+        void mostrarUsiario(){
+            if (opcion == 1){
+                cout << "Estudiante" << endl;
+            }
+            else if(opcion == 2){
+                cout <<"Profesor" << endl;
+            }
+            else {
+                cout << "Opción inválida" << endl;
+            }
+        }
+};
+
 class Libro {
 private:
     string titulo;
@@ -33,28 +64,79 @@ public:
              << ", ISBN: " << ISBN << endl;
         cout << "Estado: " << (disponible ? "Disponible" : "No disponible") << endl;
     }
+    // Función que verifica si el ISBN ya existe
+    bool existeISBN(const vector<Libro>& libros, int isbn) {
+        for (const auto& libro : libros) {
+            if (libro.getIsbn() == isbn) {
+                return true;  // Ya existe
+            }
+        }
+        return false;  // No existe
+    }
 };
 
-// Función que verifica si el ISBN ya existe
-bool existeISBN(const vector<Libro>& libros, int isbn) {
-    for (const auto& libro : libros) {
-        if (libro.getIsbn() == isbn) {
-            return true;  // Ya existe
-        }
-    }
-    return false;  // No existe
-}
+
 class Biblioteca {
     private:
-        int agregarLibro;
-        int eliminarLibro;
-        int buscarLibro;
-        int mostrarLibros;
+        int seleccion2;
     public:
+        Biblioteca(int sel2){
+            seleccion2 = sel2;
+        }
+        int getSeleccion2(){
+            return seleccion2;
+        }
+        int setSeleccion2(int sel2){
+            if (1 <= seleccion2 <= 4){
+                return seleccion2;
+            }
+            else {
+                cout << "Opción inválida. Intente de nuevo." << endl;
+            }
+        }
+        void mostrarBiblioteca(){
+            if (seleccion2 == 1){
+                cout << "Agregar Libro" << endl;
+            }
+            else if(seleccion2 == 2){
+                cout <<"Eliminar Libro" << endl;
+            }
+            else if(seleccion2 == 3){
+                cout <<"Buscar Libro" << endl;
+            }
+            else if(seleccion2 == 4){
+                cout <<"Mostrar Libros" << endl;
+            }
+            else {
+                cout << "Opción inválida" << endl;
+            }
+        }
 
 };
 
 int main() {
+    int seleccion;
+    int seleccion2;
+    cout << "1. Estudiante" <<endl;
+    cout << "2. Profesor" <<endl;
+    cin >> seleccion;
+    
+    cin.ignore(); // limpiar el buffer
+    Usuario persona(seleccion);
+    persona.mostrarUsiario();
+
+    if (seleccion == 1){
+        cout << "Bienvenido Estudiante" << endl;
+    }
+    else if (seleccion == 2){
+        cout << "Bienvenido Profesor" << endl;
+    }
+    else {
+        cout << "Opción inválida" << endl;
+    }
+
+ 
+    /*  
     vector<Libro> biblioteca;
     string titulo, autor;
     int isbn;
@@ -84,6 +166,7 @@ int main() {
         libro.mostrarInfo();
         cout << "----------------------------\n";
     }
+    */
 
     return 0;
 }
