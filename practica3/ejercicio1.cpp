@@ -44,6 +44,15 @@ bool existeISBN(const vector<Libro>& libros, int isbn) {
     }
     return false;  // No existe
 }
+class Biblioteca {
+    private:
+        int agregarLibro;
+        int eliminarLibro;
+        int buscarLibro;
+        int mostrarLibros;
+    public:
+
+};
 
 int main() {
     vector<Libro> biblioteca;
@@ -63,14 +72,14 @@ int main() {
         cin.ignore(); // limpiar el buffer
 
         if (existeISBN(biblioteca, isbn)) {
-            cout << "⚠️  Este libro ya está disponible en la biblioteca.\n";
+            cout << "Este libro ya está disponible en la biblioteca.\n";
         } else {
             biblioteca.push_back(Libro(titulo, autor, isbn));
-            cout << "✅ Libro agregado correctamente.\n";
+            cout << "Libro agregado correctamente.\n";
         }
     }
 
-    cout << "\n📚 Lista de libros en la biblioteca:\n";
+    cout << "\nLista de libros en la biblioteca:\n";
     for (auto& libro : biblioteca) {
         libro.mostrarInfo();
         cout << "----------------------------\n";
