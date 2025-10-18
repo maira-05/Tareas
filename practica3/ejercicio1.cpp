@@ -101,15 +101,18 @@ private:
     vector<Libro> libros;
 
 public:
-    void agregarLibro(const Libro& libro) {
-        for (const auto& l : libros)
-            if (l.getIsbn() == libro.getIsbn()) {
+void agregarLibro(const Libro& libro, bool mostrarMensaje = true) {
+    for (const auto& l : libros)
+        if (l.getIsbn() == libro.getIsbn()) {
+            if (mostrarMensaje)
                 cout << "Ya existe un libro con ese ISBN.\n";
-                return;
-            }
-        libros.push_back(libro);
+            return;
+        }
+    libros.push_back(libro);
+    if (mostrarMensaje)
         cout << "Libro agregado correctamente.\n";
-    }
+}
+
 
     void mostrarLibros(bool esProfesor) const {
         if (libros.empty()) {
@@ -161,9 +164,9 @@ public:
 // ==================== MAIN ====================
 int main() {
     Biblioteca biblioteca;
-    biblioteca.agregarLibro(Libro("Cien años de soledad", "Gabriel García Márquez", 1001));
-    biblioteca.agregarLibro(Libro("El Principito", "Antoine de Saint-Exupéry", 1002));
-    biblioteca.agregarLibro(Libro("1984", "George Orwell", 1003));
+    biblioteca.agregarLibro(Libro("Cien años de soledad", "Gabriel García Márquez", 1001), false);
+    biblioteca.agregarLibro(Libro("El Principito", "Antoine de Saint-Exupéry", 1002), false);
+    biblioteca.agregarLibro(Libro("1984", "George Orwell", 1003), false);
 
     int tipoUsuario;
     string nombre;
