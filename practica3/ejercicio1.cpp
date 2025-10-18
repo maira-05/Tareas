@@ -3,7 +3,37 @@
 #include <string>
 using namespace std;
 
-// ==================== CLASE LIBRO ====================
+// ====================== CLASE USUARIO ======================
+class Usuario {
+protected:
+    string nombre;
+public:
+    Usuario(string n) {
+        nombre = n;
+    }
+    virtual ~Usuario() {} 
+    string getNombre() const { return nombre; }
+    virtual int diasPrestamo() const = 0; 
+    virtual string tipoUsuario() const = 0;
+};
+
+// ====================== CLASE ESTUDIANTE ======================
+class Estudiante : public Usuario {
+public:
+    Estudiante(string n) : Usuario(n) {}
+    int diasPrestamo() const override { return 3; }
+    string tipoUsuario() const override { return "Estudiante"; }
+};
+
+// ====================== CLASE PROFESOR ======================
+class Profesor : public Usuario {
+public:
+    Profesor(string n) : Usuario(n) {}
+    int diasPrestamo() const override { return 7; }
+    string tipoUsuario() const override { return "Profesor"; }
+};
+
+// ====================== CLASE LIBRO ======================
 class Libro {
 private:
     string titulo;
@@ -11,7 +41,6 @@ private:
     int ISBN;
     bool disponible;
     string prestadoA;
-    int diasPrestamo;
 
 public:
     Libro(string t, string a, int i) {
@@ -20,7 +49,6 @@ public:
             ISBN = i;
             disponible = true;
             prestadoA = "";
-            diasPrestamo = 0;
         }
 
     string getTitulo() const { 
@@ -38,228 +66,196 @@ public:
     string getPrestadoA() const { 
         return prestadoA; 
     }
-    int getDiasPrestamo() const { 
-        return diasPrestamo; 
+
+    void prestar(const Usuario& usuario) {
+        disponible = false;
+        prestadoA = usuario.getNombre();
     }
 
-    void mostrarInfo(bool esProfesor = false) const {
-        cout << "Título: " << titulo 
-             << " | Autor: " << autor
+    void devolver() {
+        disponible = true;
+        prestadoA = "";
+    }
+
+    void mostrarInfo(bool verPrestadoA = false) const {
+        cout << "Título: " << titulo << " | Autor: " << autor
              << " | ISBN: " << ISBN
              << " | Estado: " << (disponible ? "Disponible" : "No disponible");
-        if (!disponible && esProfesor)
+        if (verPrestadoA && !disponible)
             cout << " | Prestado a: " << prestadoA;
         cout << endl;
     }
-
-    void prestar(string usuario, int dias) {
-        if (disponible) {
-            disponible = false;
-            prestadoA = usuario;
-            diasPrestamo = dias;
-            cout << "Libro \"" << titulo << "\" prestado a " << usuario 
-                 << " por " << dias << " días.\n";
-        } else {
-            cout << "El libro \"" << titulo << "\" ya está prestado.\n";
-        }
-    }
-
-    bool devolver(string usuario, int diasUsados) {
-        if (!disponible && prestadoA == usuario) {
-            disponible = true;
-            cout << "Libro \"" << titulo << "\" devuelto.\n";
-            if (diasUsados > diasPrestamo)
-                cout << "Devolución atrasada (" << diasUsados - diasPrestamo << " días tarde), tienes una multa de $2000.\n";
-            else
-                cout << "Devolución a tiempo.\n";
-            prestadoA = "";
-            diasPrestamo = 0;
-            return true;
-        }
-        cout << "No puedes devolver este libro.\n";
-        return false;
-    }
 };
 
-// ==================== CLASE USUARIO ====================
-class Usuario {
-protected:
-    string nombre;
-    int limiteDias;
-
-public:
-    Usuario(string n, int dias) {
-        nombre = n;
-        limiteDias = dias;
-    }
-    virtual ~Usuario() {}
-
-    string getNombre() const { 
-        return nombre; 
-    }
-    int getLimiteDias() const { 
-        return limiteDias; 
-    }
-
-    virtual void mostrarTipo() const = 0;
-};
-
-class Estudiante : public Usuario {
-public:
-    Estudiante(string n) : Usuario(n, 3) {}
-    void mostrarTipo() const override {
-        cout << "Usuario: " << nombre << " (Estudiante, límite 3 días)" << endl;
-    }
-};
-
-class Profesor : public Usuario {
-public:
-    Profesor(string n) : Usuario(n, 7) {}
-    void mostrarTipo() const override {
-        cout << "Usuario: " << nombre << " (Profesor, límite 7 días)" << endl;
-    }
-};
-
-// ==================== CLASE BIBLIOTECA ====================
+// ====================== CLASE BIBLIOTECA ======================
 class Biblioteca {
 private:
     vector<Libro> libros;
 
 public:
-void agregarLibro(const Libro& libro, bool mostrarMensaje = true) {
-    for (const auto& l : libros)
-        if (l.getIsbn() == libro.getIsbn()) {
-            if (mostrarMensaje)
-                cout << "Ya existe un libro con ese ISBN.\n";
-            return;
-        }
-    libros.push_back(libro);
-    if (mostrarMensaje)
-        cout << "Libro agregado correctamente.\n";
-}
+    Biblioteca() {
+        // Agregamos algunos libros por defecto
+        agregarLibro(Libro("Cien años de soledad", "Gabriel García Márquez", 1001), false);
+        agregarLibro(Libro("El Principito", "Antoine de Saint-Exupéry", 1002), false);
+        agregarLibro(Libro("1984", "George Orwell", 1003), false);
+        agregarLibro(Libro("Don Quijote", "Miguel de Cervantes", 1004), false);
+    }
 
+    void agregarLibro(const Libro& libro, bool mostrarMensaje = true) {
+        for (const auto& l : libros)
+            if (l.getIsbn() == libro.getIsbn()) {
+                if (mostrarMensaje)
+                    cout << "Ya existe un libro con ese ISBN.\n";
+                return;
+            }
+        libros.push_back(libro);
+        if (mostrarMensaje)
+            cout << "Libro agregado correctamente.\n";
+    }
 
-    void mostrarLibros(bool esProfesor) const {
-        if (libros.empty()) {
-            cout << "No hay libros en la biblioteca.\n";
-            return;
-        }
+    void mostrarLibros(const Usuario& usuario) {
         cout << "\n===== LISTA DE LIBROS =====\n";
         for (const auto& l : libros)
-            l.mostrarInfo(esProfesor);
+            l.mostrarInfo(usuario.tipoUsuario() == "Profesor");
     }
 
-    void buscarLibro(bool esProfesor) const {
-        int opcion;
+    void buscarLibro(const Usuario& usuario) {
         cout << "\nBuscar por:\n1. Título\n2. Autor\n> ";
-        cin >> opcion;
+        int opcion; cin >> opcion;
         cin.ignore();
-        string valor;
-        bool encontrado = false;
 
-        if (opcion == 1) {
-            cout << "Ingrese título: ";
-            getline(cin, valor);
-            for (const auto& l : libros)
-                if (l.getTitulo() == valor) {
-                    l.mostrarInfo(esProfesor);
-                    encontrado = true;
-                }
-        } else if (opcion == 2) {
-            cout << "Ingrese autor: ";
-            getline(cin, valor);
-            for (const auto& l : libros)
-                if (l.getAutor() == valor) {
-                    l.mostrarInfo(esProfesor);
-                    encontrado = true;
-                }
+        string texto;
+        cout << "Ingrese el texto de búsqueda: ";
+        getline(cin, texto);
+
+        bool encontrado = false;
+        for (const auto& l : libros) {
+            if ((opcion == 1 && l.getTitulo() == texto) ||
+                (opcion == 2 && l.getAutor() == texto)) {
+                l.mostrarInfo(usuario.tipoUsuario() == "Profesor");
+                encontrado = true;
+            }
         }
         if (!encontrado)
-            cout << "No se encontró ningún libro.\n";
+            cout << "No se encontraron libros con ese criterio.\n";
     }
 
-    Libro* obtenerLibro(string titulo, string autor) {
-        for (auto& l : libros)
-            if (l.getTitulo() == titulo && l.getAutor() == autor)
-                return &l;
-        return nullptr;
+    void llevarLibro(Usuario& usuario) {
+        string titulo;
+        cin.ignore();
+        cout << "Ingrese el título del libro que desea llevar: ";
+        getline(cin, titulo);
+
+        for (auto& l : libros) {
+            if (l.getTitulo() == titulo) {
+                if (!l.estaDisponible()) {
+                    cout << "El libro no está disponible actualmente.\n";
+                    return;
+                }
+                l.prestar(usuario);
+                cout << "Has llevado el libro \"" << l.getTitulo()
+                     << "\". Tienes " << usuario.diasPrestamo() << " días para devolverlo.\n";
+                return;
+            }
+        }
+        cout << "No se encontró el libro.\n";
+    }
+
+    void devolverLibro(Usuario& usuario) {
+        string titulo;
+        cin.ignore();
+        cout << "Ingrese el título del libro que desea devolver: ";
+        getline(cin, titulo);
+
+        for (auto& l : libros) {
+            if (l.getTitulo() == titulo && !l.estaDisponible() && l.getPrestadoA() == usuario.getNombre()) {
+                l.devolver();
+                cout << "Libro devuelto correctamente.\n";
+                cout << "¿Fue entregado a tiempo? (1=Sí, 2=No): ";
+                int op; cin >> op;
+                if (op == 2)
+                    cout << "El libro fue entregado con retraso.\n";
+                else
+                    cout << "El libro fue entregado a tiempo.\n";
+                return;
+            }
+        }
+        cout << "No se encontró un libro prestado con ese título o no pertenece a este usuario.\n";
     }
 };
 
-// ==================== MAIN ====================
+// ====================== MAIN ======================
 int main() {
     Biblioteca biblioteca;
-    biblioteca.agregarLibro(Libro("Cien años de soledad", "Gabriel García Márquez", 1001), false);
-    biblioteca.agregarLibro(Libro("El Principito", "Antoine de Saint-Exupéry", 1002), false);
-    biblioteca.agregarLibro(Libro("1984", "George Orwell", 1003), false);
 
-    int tipoUsuario;
-    string nombre;
-    cout << "=== SISTEMA DE BIBLIOTECA ===\n";
-    cout << "1. Estudiante\n2. Profesor\n> ";
-    cin >> tipoUsuario;
-    cin.ignore();
+    while (true) { 
+        cout << "\n===== MENU PRINCIPAL =====\n";
+        cout << "1. Estudiante\n";
+        cout << "2. Profesor\n";
+        cout << "0. Salir del programa\n";
+        cout << "Seleccione una opción: ";
 
-    Usuario* usuario = nullptr;
-    cout << "Ingrese su nombre: ";
-    getline(cin, nombre);
-
-    if (tipoUsuario == 1)
-        usuario = new Estudiante(nombre);
-    else if (tipoUsuario == 2)
-        usuario = new Profesor(nombre);
-    else {
-        cout << "Opción inválida.\n";
-        return 0;
-    }
-
-    usuario->mostrarTipo();
-
-    int opcion;
-    do {
-        cout << "\n===== MENÚ SECUNDARIO =====\n";
-        cout << "1. Mostrar libros disponibles\n";
-        cout << "2. Devolver libro\n";
-        cout << "3. Llevar libro\n";
-        cout << "4. Buscar libros\n";
-        cout << "0. Salir\n> ";
+        int opcion;
         cin >> opcion;
-        cin.ignore();
 
-        if (opcion == 1) {
-            biblioteca.mostrarLibros(tipoUsuario == 2);
-        } 
-        else if (opcion == 2) {
-            string titulo, autor;
-            int dias;
-            cout << "Ingrese título del libro a devolver: ";
-            getline(cin, titulo);
-            cout << "Ingrese autor: ";
-            getline(cin, autor);
-            cout << "Ingrese los días que pasaron desde el préstamo: ";
-            cin >> dias;
-            cin.ignore();
-            Libro* l = biblioteca.obtenerLibro(titulo, autor);
-            if (l) l->devolver(usuario->getNombre(), dias);
-            else cout << "Libro no encontrado.\n";
-        } 
-        else if (opcion == 3) {
-            string titulo, autor;
-            cout << "Ingrese título del libro: ";
-            getline(cin, titulo);
-            cout << "Ingrese autor: ";
-            getline(cin, autor);
-            Libro* l = biblioteca.obtenerLibro(titulo, autor);
-            if (l) l->prestar(usuario->getNombre(), usuario->getLimiteDias());
-            else cout << "Libro no encontrado.\n";
-        } 
-        else if (opcion == 4) {
-            biblioteca.buscarLibro(tipoUsuario == 2);
+        if (opcion == 0) {
+            cout << "Saliendo del programa...\n";
+            break;
         }
 
-    } while (opcion != 0);
+        if (opcion != 1 && opcion != 2) {
+            cout << "Opción inválida. Intente de nuevo.\n";
+            continue;
+        }
 
-    cout << "Gracias por usar la biblioteca.\n";
-    delete usuario;
+        string nombre;
+        cin.ignore();
+        cout << "Ingrese su nombre: ";
+        getline(cin, nombre);
+
+        Usuario* usuarioActual = nullptr;
+        if (opcion == 1) {
+            usuarioActual = new Estudiante(nombre);
+            cout << "\nBienvenido, " << nombre << " (Estudiante)\n";
+        } else {
+            usuarioActual = new Profesor(nombre);
+            cout << "\nBienvenido, " << nombre << " (Profesor)\n";
+        }
+
+        while (true) { 
+            cout << "\n----- MENU BIBLIOTECA -----\n";
+            cout << "1. Mostrar libros disponibles\n";
+            cout << "2. Devolver libro\n";
+            cout << "3. Llevar libro\n";
+            cout << "4. Buscar libro\n";
+            cout << "5. Cerrar sesión y volver al menú principal\n";
+            cout << "0. Salir del programa\n";
+            cout << "Seleccione una opción: ";
+
+            int subOpcion;
+            cin >> subOpcion;
+
+            if (subOpcion == 0) {
+                cout << "Saliendo del programa...\n";
+                delete usuarioActual;
+                return 0;
+            }
+
+            if (subOpcion == 5) {
+                cout << "\nCerrando sesión...\n";
+                delete usuarioActual;
+                break;
+            }
+
+            switch (subOpcion) {
+                case 1: biblioteca.mostrarLibros(*usuarioActual); break;
+                case 2: biblioteca.devolverLibro(*usuarioActual); break;
+                case 3: biblioteca.llevarLibro(*usuarioActual); break;
+                case 4: biblioteca.buscarLibro(*usuarioActual); break;
+                default: cout << "Opción inválida.\n"; break;
+            }
+        }
+    }
+
     return 0;
 }
