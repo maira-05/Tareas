@@ -231,7 +231,7 @@ int main() {
 
     } while (opcion != 0);
 
-    cout << "👋 Gracias por usar la biblioteca.\n";
+    cout << "Gracias por usar la biblioteca.\n";
     delete usuario;
     return 0;
 }
