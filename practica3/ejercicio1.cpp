@@ -14,15 +14,33 @@ private:
     int diasPrestamo;
 
 public:
-    Libro(string t, string a, int i)
-        : titulo(t), autor(a), ISBN(i), disponible(true), prestadoA(""), diasPrestamo(0) {}
+    Libro(string t, string a, int i) {
+            titulo = t;
+            autor = a;
+            ISBN = i;
+            disponible = true;
+            prestadoA = "";
+            diasPrestamo = 0;
+        }
 
-    string getTitulo() const { return titulo; }
-    string getAutor() const { return autor; }
-    int getIsbn() const { return ISBN; }
-    bool estaDisponible() const { return disponible; }
-    string getPrestadoA() const { return prestadoA; }
-    int getDiasPrestamo() const { return diasPrestamo; }
+    string getTitulo() const { 
+        return titulo; 
+    }
+    string getAutor() const { 
+        return autor; 
+    }
+    int getIsbn() const { 
+        return ISBN; 
+    }
+    bool estaDisponible() const { 
+        return disponible; 
+    }
+    string getPrestadoA() const { 
+        return prestadoA; 
+    }
+    int getDiasPrestamo() const { 
+        return diasPrestamo; 
+    }
 
     void mostrarInfo(bool esProfesor = false) const {
         cout << "Título: " << titulo 
@@ -70,11 +88,18 @@ protected:
     int limiteDias;
 
 public:
-    Usuario(string n, int dias) : nombre(n), limiteDias(dias) {}
+    Usuario(string n, int dias) {
+        nombre = n;
+        limiteDias = dias;
+    }
     virtual ~Usuario() {}
 
-    string getNombre() const { return nombre; }
-    int getLimiteDias() const { return limiteDias; }
+    string getNombre() const { 
+        return nombre; 
+    }
+    int getLimiteDias() const { 
+        return limiteDias; 
+    }
 
     virtual void mostrarTipo() const = 0;
 };
