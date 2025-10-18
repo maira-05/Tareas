@@ -39,26 +39,26 @@ public:
             disponible = false;
             prestadoA = usuario;
             diasPrestamo = dias;
-            cout << "✅ Libro \"" << titulo << "\" prestado a " << usuario 
+            cout << "Libro \"" << titulo << "\" prestado a " << usuario 
                  << " por " << dias << " días.\n";
         } else {
-            cout << "❌ El libro \"" << titulo << "\" ya está prestado.\n";
+            cout << "El libro \"" << titulo << "\" ya está prestado.\n";
         }
     }
 
     bool devolver(string usuario, int diasUsados) {
         if (!disponible && prestadoA == usuario) {
             disponible = true;
-            cout << "📘 Libro \"" << titulo << "\" devuelto.\n";
+            cout << "Libro \"" << titulo << "\" devuelto.\n";
             if (diasUsados > diasPrestamo)
-                cout << "⚠️ Devolución atrasada (" << diasUsados - diasPrestamo << " días tarde).\n";
+                cout << "Devolución atrasada (" << diasUsados - diasPrestamo << " días tarde).\n";
             else
-                cout << "✅ Devolución a tiempo.\n";
+                cout << "Devolución a tiempo.\n";
             prestadoA = "";
             diasPrestamo = 0;
             return true;
         }
-        cout << "❌ No puedes devolver este libro.\n";
+        cout << "No puedes devolver este libro.\n";
         return false;
     }
 };
@@ -83,7 +83,7 @@ class Estudiante : public Usuario {
 public:
     Estudiante(string n) : Usuario(n, 3) {}
     void mostrarTipo() const override {
-        cout << "👩‍🎓 Usuario: " << nombre << " (Estudiante, límite 3 días)" << endl;
+        cout << "Usuario: " << nombre << " (Estudiante, límite 3 días)" << endl;
     }
 };
 
@@ -91,7 +91,7 @@ class Profesor : public Usuario {
 public:
     Profesor(string n) : Usuario(n, 7) {}
     void mostrarTipo() const override {
-        cout << "👨‍🏫 Usuario: " << nombre << " (Profesor, límite 7 días)" << endl;
+        cout << "Usuario: " << nombre << " (Profesor, límite 7 días)" << endl;
     }
 };
 
@@ -104,16 +104,16 @@ public:
     void agregarLibro(const Libro& libro) {
         for (const auto& l : libros)
             if (l.getIsbn() == libro.getIsbn()) {
-                cout << "❌ Ya existe un libro con ese ISBN.\n";
+                cout << "Ya existe un libro con ese ISBN.\n";
                 return;
             }
         libros.push_back(libro);
-        cout << "✅ Libro agregado correctamente.\n";
+        cout << "Libro agregado correctamente.\n";
     }
 
     void mostrarLibros(bool esProfesor) const {
         if (libros.empty()) {
-            cout << "📚 No hay libros en la biblioteca.\n";
+            cout << "No hay libros en la biblioteca.\n";
             return;
         }
         cout << "\n===== LISTA DE LIBROS =====\n";
@@ -147,7 +147,7 @@ public:
                 }
         }
         if (!encontrado)
-            cout << "❌ No se encontró ningún libro.\n";
+            cout << "No se encontró ningún libro.\n";
     }
 
     Libro* obtenerLibro(string titulo, string autor) {
@@ -213,7 +213,7 @@ int main() {
             cin.ignore();
             Libro* l = biblioteca.obtenerLibro(titulo, autor);
             if (l) l->devolver(usuario->getNombre(), dias);
-            else cout << "❌ Libro no encontrado.\n";
+            else cout << "Libro no encontrado.\n";
         } 
         else if (opcion == 3) {
             string titulo, autor;
@@ -223,7 +223,7 @@ int main() {
             getline(cin, autor);
             Libro* l = biblioteca.obtenerLibro(titulo, autor);
             if (l) l->prestar(usuario->getNombre(), usuario->getLimiteDias());
-            else cout << "❌ Libro no encontrado.\n";
+            else cout << "Libro no encontrado.\n";
         } 
         else if (opcion == 4) {
             biblioteca.buscarLibro(tipoUsuario == 2);
