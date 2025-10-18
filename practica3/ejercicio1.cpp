@@ -174,7 +174,7 @@ public:
                 cout << "¿Fue entregado a tiempo? (1=Sí, 2=No): ";
                 int op; cin >> op;
                 if (op == 2)
-                    cout << "El libro fue entregado con retraso.\n";
+                    cout << "El libro fue entregado con retraso tienes una multa de $2000.\n";
                 else
                     cout << "El libro fue entregado a tiempo.\n";
                 return;
