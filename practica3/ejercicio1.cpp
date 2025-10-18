@@ -7,13 +7,15 @@ class Libro {
         string titulo;
         string autor;
         int ISBN;
-        bool disponible;
+        bool disponible(){
+            return true;
+        };
     public:
         Libro(string t, string a, int i){
             titulo = t;
             autor = a;
             ISBN = i;
-            disponible = true;
+
         }
         string getTitulo(){
             return titulo;
@@ -31,11 +33,7 @@ class Libro {
                 cout << "ISBN inválido." << endl;
             }
         }
-        bool getDisponible(){
-            return disponible;
-        }
-        bool setDisponible(bool d){
-            disponible = d;
-            return disponible;
-        }
+        
+
+        
 };
