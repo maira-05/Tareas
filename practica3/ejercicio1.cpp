@@ -69,7 +69,7 @@ public:
             disponible = true;
             cout << "Libro \"" << titulo << "\" devuelto.\n";
             if (diasUsados > diasPrestamo)
-                cout << "Devolución atrasada (" << diasUsados - diasPrestamo << " días tarde).\n";
+                cout << "Devolución atrasada (" << diasUsados - diasPrestamo << " días tarde), tienes una multa de $2000.\n";
             else
                 cout << "Devolución a tiempo.\n";
             prestadoA = "";
