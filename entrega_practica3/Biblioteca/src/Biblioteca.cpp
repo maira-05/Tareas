@@ -1,4 +1,5 @@
-#include "Biblioteca.h"
+#include "../include/Biblioteca.h"
+
 
 Biblioteca::Biblioteca() {
     agregarLibro(Libro("Cien años de soledad", "Gabriel García Márquez", 1001), false);

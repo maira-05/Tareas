@@ -1,4 +1,5 @@
-#include "Libro.h"
+#include "../include/Libro.h"
+
 
 Libro::Libro(string t, string a, int i) {
     titulo = t;

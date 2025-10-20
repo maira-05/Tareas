@@ -1,4 +1,5 @@
-#include "Usuario.h"
+#include "../include/Usuario.h"
+
 
 // ===== Implementación de Usuario =====
 Usuario::Usuario(string n) {
