@@ -23,18 +23,46 @@ public:
 
     void setDisponible(bool d) { disponible = d; }
 
+<<<<<<< HEAD
     virtual void mostrarInformacion() const {
         cout << "Marca: " << marca
              << ", Modelo: " << modelo
              << ", Placa: " << placa
              << ", Disponible: " << (disponible ? "Sí" : "No") << endl;
     }
+=======
+    string getplaca() const{
+        return placa;
+    }
+
+    bool estaDisponible() const {
+        return disponible;
+    }
+
+    void setdisponible(bool d){
+        disponible = d;
+    }
+
+    
+    virtual void mostrarInformacion() const {
+        cout << "Marca: " << marca
+             << " | Modelo: " << modelo
+             << " | Placa: " << placa
+             <<", Disponible: "
+             << (disponible ? "Si":"No")<<endl;
+    }
+    virtual ~Vehiculo(){}
+>>>>>>> 31847bf311c489d0f706dc5e0084aef13e4018bc
 
     virtual ~Vehiculo() {}
 };
 
+<<<<<<< HEAD
 // ================= CLASE AUTO =================
 class Auto : public Vehiculo {
+=======
+class Auto: public Vehiculo {
+>>>>>>> 31847bf311c489d0f706dc5e0084aef13e4018bc
 private:
     int pasajeros;
 public:
@@ -52,6 +80,7 @@ public:
 class Bicicleta : public Vehiculo {
 public:
     Bicicleta(string m, string mo, string p)
+<<<<<<< HEAD
         : Vehiculo(m, mo, p) {}
 
     void mostrarInformacion() const override {
@@ -72,6 +101,27 @@ public:
         vehiculos.push_back(new Auto("Chevrolet", "Spark", "XYZ789", 4));
         vehiculos.push_back(new Auto("Nissan", "Versa", "JKL456", 5));
 
+=======
+        : Vehiculo(m, mo, p){}
+
+    void mostrarInformacion() const {
+        cout << "[Bicicleta] ";
+        Vehiculo::mostrarInformacion();
+    }
+
+    
+};
+
+class SistemaAlquiler {
+private:
+    vector<Vehiculo*> vehiculos;
+public:
+    SistemaAlquiler(){
+        vehiculos.push_back(new Auto("Toyota", "Corolla", "ABC123", 5));
+        vehiculos.push_back(new Auto("Chevrolet", "Spark", "XYZ789", 4));
+        vehiculos.push_back(new Auto("Nissan", "Versa", "JKL456", 5));
+
+>>>>>>> 31847bf311c489d0f706dc5e0084aef13e4018bc
         vehiculos.push_back(new Bicicleta("Trek", "FX 3", "BIC001"));
         vehiculos.push_back(new Bicicleta("Giant", "Escape 2", "BIC002"));
         vehiculos.push_back(new Bicicleta("Specialized", "Sirrus", "BIC003"));
@@ -81,6 +131,7 @@ public:
         for (auto v : vehiculos)
             delete v;
     }
+<<<<<<< HEAD
 
     void registrarVehiculo() {
         int tipo;
@@ -198,3 +249,11 @@ int main() {
 
     return 0;
 }
+=======
+};
+
+int main(){
+    cout << "Sistema de Alquiler de Vehículos" << endl;
+    
+}
+>>>>>>> 31847bf311c489d0f706dc5e0084aef13e4018bc
