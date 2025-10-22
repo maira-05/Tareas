@@ -41,15 +41,16 @@ class Vehiculo {
 
     virtual ~Vehiculo(){}
     virtual void mostrarInformacion() const {
-        cout << "Marca: "<<marca
-             <<", Modelo: "<<modelo
-             << ",Placa: "<<placa
+        cout << "Marca: " << marca
+             << " | Modelo: " << modelo
+             << " | Placa: " << placa
              <<", Disponible: "
              << (disponible ? "Si":"No")<<endl;
     }
     
 
 };
+
 class Auto: public Vehiculo {
 private:
     int pasajeros;
