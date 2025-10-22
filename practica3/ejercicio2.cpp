@@ -62,7 +62,7 @@ public:
     void mostrarInformacion() const {
         cout << "[Auto] ";
         Vehiculo::mostrarInformacion();
-        cout << "   Capacidad de pasajeros: " << capacidadPasajeros << endl;
+        cout << "   Capacidad de pasajeros: " << pasajeros << endl;
     }
 };
 
