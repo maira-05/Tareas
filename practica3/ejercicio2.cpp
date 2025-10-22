@@ -50,12 +50,12 @@ class Auto: public Vehiculo {
 private:
     int pasajeros;
 public:
-    auto(string m, string mo, string p, int pa)
+    Auto(string m, string mo, string p, int pa)
         : Vehiculo(m, mo, p){
         pasajeros = pa;
     }
 
-    int getpasajeros;{
+    int getpasajeros() const{
         return pasajeros;
     }
 
