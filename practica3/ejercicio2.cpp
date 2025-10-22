@@ -72,7 +72,9 @@ public:
 
 
 class Bicicleta: public Vehiculo {
-    Bicicleta(string m, string mo, string p, )
+public:
+    Bicicleta(string m, string mo, string p )
+        : Vehiculo(m, mo, p)
 
 };
 class SistemaAlquiler {
