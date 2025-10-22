@@ -39,7 +39,7 @@ class Vehiculo {
         disponible = d;
     }
 
-    virtual ~Vehiculo(){}
+    
     virtual void mostrarInformacion() const {
         cout << "Marca: " << marca
              << " | Modelo: " << modelo
@@ -47,7 +47,7 @@ class Vehiculo {
              <<", Disponible: "
              << (disponible ? "Si":"No")<<endl;
     }
-    
+    virtual ~Vehiculo(){}
 
 };
 
@@ -73,19 +73,34 @@ public:
 
 
 class Bicicleta: public Vehiculo {
-private:
-    string tipo;
 public:
-    Bicicleta(string m, string p, string t )
-        : Vehiculo(m, mo, p){
-        tipo = t;
+    Bicicleta(string m, string mo, string p)
+        : Vehiculo(m, mo, p){}
+
+    void mostrarInformacion() const {
+        cout << "[Bicicleta] ";
+        Vehiculo::mostrarInformacion();
+    }
+
+    
+};
+
+class SistemaAlquiler {
+private:
+    vector<Vehiculo*> vehiculos;
+public:
+    SistemaAlquiler(){
+        vehiculos.push_back(new Auto("Toyota", "Corolla", "ABC123", 5));
+        vehiculos.push_back(new Auto("Chevrolet", "Spark", "XYZ789", 4));
+        vehiculos.push_back(new Auto("Nissan", "Versa", "JKL456", 5));
+
+        vehiculos.push_back(new Bicicleta("Trek", "FX 3", "BIC001"));
+        vehiculos.push_back(new Bicicleta("Giant", "Escape 2", "BIC002"));
+        vehiculos.push_back(new Bicicleta("Specialized", "Sirrus", "BIC003"));
     }
 
 };
-class SistemaAlquiler {
-
-};
-void main(){
+int main(){
     cout << "Sistema de Alquiler de Vehículos" << endl;
     
 }
