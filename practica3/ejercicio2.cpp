@@ -81,3 +81,7 @@ public:
 class SistemaAlquiler {
 
 };
+void main(){
+    cout << "Sistema de Alquiler de Vehículos" << endl;
+    
+}
