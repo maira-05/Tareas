@@ -59,10 +59,10 @@ public:
         return pasajeros;
     }
 
-    void mostrarcap() const{
-        cout << "Auto";
-        Vehiculo::mostrarcap();
-        cout << "capacidad de pasajeros" << pasajeros << endl;
+    void mostrarInformacion() const {
+        cout << "[Auto] ";
+        Vehiculo::mostrarInformacion();
+        cout << "   Capacidad de pasajeros: " << capacidadPasajeros << endl;
     }
 };
 
