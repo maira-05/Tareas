@@ -41,7 +41,11 @@ class Vehiculo {
 
     virtual ~Vehiculo(){}
     virtual void mostrarInformacion() const {
-        cout << "Marca: "<<marca<<", Modelo: "<<modelo<< ",Placa: "<<placa<<", Disponible: "<< (disponible ? "Si":"No")<<endl;
+        cout << "Marca: "<<marca
+             <<", Modelo: "<<modelo
+             << ",Placa: "<<placa
+             <<", Disponible: "
+             << (disponible ? "Si":"No")<<endl;
     }
     
 
@@ -67,7 +71,8 @@ public:
 };
 
 
-class Bicicleta {
+class Bicicleta: public Vehiculo {
+    Bicicleta(string m, string mo, string p, )
 
 };
 class SistemaAlquiler {
