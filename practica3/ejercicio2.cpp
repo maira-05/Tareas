@@ -73,9 +73,13 @@ public:
 
 
 class Bicicleta: public Vehiculo {
+private:
+    string tipo;
 public:
-    Bicicleta(string m, string mo, string p )
-        : Vehiculo(m, mo, p)
+    Bicicleta(string m, string p, string t )
+        : Vehiculo(m, mo, p){
+        tipo = t;
+    }
 
 };
 class SistemaAlquiler {
