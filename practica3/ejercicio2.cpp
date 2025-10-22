@@ -99,7 +99,12 @@ public:
         vehiculos.push_back(new Bicicleta("Specialized", "Sirrus", "BIC003"));
     }
 
+    ~SistemaAlquiler() {
+        for (auto v : vehiculos)
+            delete v;
+    }
 };
+
 int main(){
     cout << "Sistema de Alquiler de Vehículos" << endl;
     
