@@ -46,9 +46,27 @@ class Vehiculo {
     
 
 };
-class Auto {
+class Auto: public Vehiculo {
+private:
+    int pasajeros;
+public:
+    auto(string m, string mo, string p, int pa)
+        : Vehiculo(m, mo, p){
+        pasajeros = pa;
+    }
 
+    int getpasajeros;{
+        return pasajeros;
+    }
+
+    void mostrarcap() const{
+        cout << "Auto";
+        Vehiculo::mostrarcap();
+        cout << "capacidad de pasajeros" << pasajeros << endl;
+    }
 };
+
+
 class Bicicleta {
 
 };
