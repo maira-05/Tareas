@@ -18,6 +18,27 @@ class Vehiculo {
         placa = p;
         disponible=true;
     }
+
+    string getmarca() const{
+        return marca;
+    }
+
+    string getmodelo() const{
+        return modelo;
+    }
+
+    string getplaca() const{
+        return placa;
+    }
+
+    bool estaDisponible() const {
+        return disponible;
+    }
+
+    void setdisponible(bool d){
+        disponible = d;
+    }
+
     virtual ~Vehiculo(){}
     virtual void mostrarInformacion() const {
         cout << "Marca: "<<marca<<", Modelo: "<<modelo<< ",Placa: "<<placa<<", Disponible: "<< (disponible ? "Si":"No")<<endl;
