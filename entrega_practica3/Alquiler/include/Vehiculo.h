@@ -12,6 +12,7 @@ private:
 
 public:
     Vehiculo(string m, string mo, string p);
+    virtual ~Vehiculo(); 
     string getmarca() const ;
     string getmodelo() const ;
     string getplaca() const ;
