@@ -16,21 +16,12 @@ public:
     Producto(string n, double p, int c)
         : nombre(n), precio(p), cantidad(c) {}
 
-    string getNombre() const { 
-        return nombre; 
-    }
-    double getPrecio() const { 
-        return precio; 
-    }
-    int getCantidad() const { 
-        return cantidad; 
-    }
+    string getNombre() const { return nombre; }
+    double getPrecio() const { return precio; }
+    int getCantidad() const { return cantidad; }
 
-    void setCantidad(int c) { 
-        cantidad = c; 
-    }
+    void setCantidad(int c) { cantidad = c; }
 };
-
 
 class ItemCarrito {
 private:
@@ -41,18 +32,13 @@ public:
     ItemCarrito(Producto p, int c)
         : producto(p), cantidadComprada(c) {}
 
-    Producto getProducto() const { 
-        return producto; 
-    }
-    int getCantidadComprada() const { 
-        return cantidadComprada; 
-    }
+    Producto getProducto() const { return producto; }
+    int getCantidadComprada() const { return cantidadComprada; }
 
     double subtotal() const {
         return producto.getPrecio() * cantidadComprada;
     }
 };
-
 
 class CarritoCompras {
 private:
@@ -105,7 +91,6 @@ public:
     }
 };
 
-
 class Usuario {
 private:
     string nombre;
@@ -115,9 +100,7 @@ public:
     Usuario() : nombre("") {}
     Usuario(string n) : nombre(n) {}
 
-    string getNombre() const { 
-        return nombre; 
-    }
+    string getNombre() const { return nombre; }
 
     bool yaCompro(const string& producto) const {
         for (const auto& p : historial) {
@@ -147,7 +130,6 @@ public:
     }
 };
 
-
 int main() {
     vector<Producto> productos = {
         Producto("Camiseta básica", 49900, 20),
@@ -168,7 +150,7 @@ int main() {
     while (true) {
         cout << "\n===== TIENDA EN LÍNEA =====\n";
         cout << "1. Iniciar sesión o registrarse\n";
-        cout << "2. Mostrar usuarios registrados (opcional)\n";
+        cout << "2. Mostrar usuarios registrados\n";
         cout << "3. Salir\n";
         cout << "Seleccione una opción: ";
         int opcion;
@@ -196,7 +178,7 @@ int main() {
 
             while (true) {
                 cout << "\n--- MENÚ DE COMPRAS (" << usuario.getNombre() << ") ---\n";
-                cout << "1. Ver catálogo\n";
+                cout << "1. Ver catálogo \n";
                 cout << "2. Agregar producto al carrito\n";
                 cout << "3. Eliminar producto del carrito\n";
                 cout << "4. Ver carrito\n";
@@ -215,12 +197,13 @@ int main() {
                 cin.ignore();
 
                 if (opcionMenu == 1) {
-                    cout << "\n--- Catálogo de productos ---\n";
+                    cout << "\n--- 🏪 Catálogo de productos ---\n";
                     for (size_t i = 0; i < productos.size(); ++i) {
                         cout << i + 1 << ". " << productos[i].getNombre()
                              << " - $" << productos[i].getPrecio()
-                             << " (Cantidad disponible: " << productos[i].getCantidad() << ")\n";
+                             << " (Disponibles: " << productos[i].getCantidad() << ")\n";
                     }
+
                 } else if (opcionMenu == 2) {
                     int indice, cantidad;
                     cout << "\nIngrese el número del producto: ";
@@ -230,40 +213,74 @@ int main() {
                     cin.ignore();
 
                     if (indice > 0 && indice <= (int)productos.size()) {
-                        Producto prod = productos[indice - 1];
-                        if (usuario.yaCompro(prod.getNombre())) {
+                        Producto& prod = productos[indice - 1];
+
+                        if (cantidad > prod.getCantidad()) {
+                            cout << "⚠ No hay suficiente stock. Solo quedan "
+                                 << prod.getCantidad() << " unidades disponibles.\n";
+                        } else if (usuario.yaCompro(prod.getNombre())) {
                             cout << "Ya compraste este producto anteriormente.\n";
                         } else {
                             carrito.agregarProducto(prod, cantidad);
-                            cout << "Producto agregado al carrito.\n";
+                            cout << "✅ Producto agregado al carrito.\n";
                         }
                     } else {
                         cout << "Producto inválido.\n";
                     }
+
                 } else if (opcionMenu == 3) {
                     string nombreProd;
                     cout << "Nombre del producto a eliminar: ";
                     getline(cin, nombreProd);
                     carrito.eliminarProducto(nombreProd);
+
                 } else if (opcionMenu == 4) {
                     carrito.mostrarCarrito();
+
                 } else if (opcionMenu == 5) {
                     if (!carrito.estaVacio()) {
+                        // 🔽 Actualizar inventario tras la compra
+                        for (const auto& item : carrito.getItems()) {
+                            string nombreProd = item.getProducto().getNombre();
+                            int cantidadComprada = item.getCantidadComprada();
+
+                            for (auto& prod : productos) {
+                                if (prod.getNombre() == nombreProd) {
+                                    int nuevaCantidad = prod.getCantidad() - cantidadComprada;
+                                    if (nuevaCantidad < 0) nuevaCantidad = 0;
+                                    prod.setCantidad(nuevaCantidad);
+                                    break;
+                                }
+                            }
+                        }
+
                         usuario.registrarCompra(carrito);
-                        cout << "Compra realizada exitosamente.\n";
+                        cout << "\n✅ Compra realizada exitosamente.\n";
+
+                        // Mostrar inventario actualizado
+                        cout << "\n📦 Inventario actualizado:\n";
+                        for (size_t i = 0; i < productos.size(); ++i) {
+                            cout << i + 1 << ". " << productos[i].getNombre()
+                                 << " - Disponibles: " << productos[i].getCantidad() << endl;
+                        }
+
                         carrito = CarritoCompras();
                     } else {
                         cout << "El carrito está vacío.\n";
                     }
+
                 } else if (opcionMenu == 6) {
                     usuario.mostrarHistorial();
+
                 } else if (opcionMenu == 7) {
                     cout << "Cerrando sesión de " << usuario.getNombre() << "\n";
                     break;
+
                 } else {
                     cout << "Opción inválida\n";
                 }
             }
+
         } else if (opcion == 2) {
             cout << "\nUsuarios registrados:\n";
             if (usuarios.empty()) {
@@ -281,6 +298,6 @@ int main() {
         }
     }
 
-    cout << "\n Gracias por visitar la tienda.\n";
+    cout << "\nGracias por visitar la tienda.\n";
     return 0;
 }
