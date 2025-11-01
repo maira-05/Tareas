@@ -1,0 +1,3 @@
+/home/yaime07/alse_1/tareas_mai/parcial/build/CMakeFiles/gestion.dir
+/home/yaime07/alse_1/tareas_mai/parcial/build/CMakeFiles/edit_cache.dir
+/home/yaime07/alse_1/tareas_mai/parcial/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/gestion.dir/src/main.cpp.o CMakeFiles/gestion.dir/src/Estudiante.cpp.o -o gestion 
