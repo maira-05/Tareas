@@ -68,8 +68,6 @@ public:
         }
     }
 
-    
-
     void agregarcreditos() {
         int creditos;
         aprobadas += creditos;
@@ -78,7 +76,44 @@ public:
     void registronota() {
         float nota;
         int creditos;
-        
+        promedio = ((promedio * aprobadas) + (nota * creditos)) / (aprobadas + creditos);
+        aprobadas += creditos;   
+    }
+
+    string obtenerresumen() {
+        return "nombre:" + nombre
+                + ", programa:" + to_string(programa)
+                + ", ID:" + to_string(ID)
+                + ", promedio:" + to_string(promedio)
+                + ", aprobadas:" + to_string(aprobadas);
+    }
+
+    bool grado(int creditos_requeridos) {
+        return (aprobadas >= creditos_requeridos);
     }
 
 };
+
+main() {
+    vector<Estudiante> estudiantes;
+    estudiantes.push_back(estudiantes("Juan Perez", 101, 4.5, 30, 12345));
+    estudiantes.push_back(estudiantes("Maria Gomez", 102, 3.8, 25, 67890)); 
+    estudiantes.push_back(estudiantes("Luis Rodriguez", 103, 4.2, 28, 11223));
+    
+    estudiantes[0].registronota(4.9, 0.5);
+    estudiantes[1].agregarnota(2.2, 0);
+    estudiantes[2].agregarnota(3.5, 2.5);
+
+    cout<<"Resumen de estudiantes:"<<endl;
+    for (auto &e : estudiantes) {
+        cout<<e.obtenerresumen()<<endl;
+    }
+
+    float suma_promedios = 0.0;
+    for (auto &e : estudiantes) suma_promedios += e.getPromedio();
+    float promedio_general = suma_promedios / estudiantes.size();
+    cout<<"\nPromedio general de la clase: "<<promedio_general<<endl;   
+    
+
+    return 0;
+}
