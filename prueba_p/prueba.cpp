@@ -1,119 +1,85 @@
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 using namespace std;
 
 class Estudiante {
 private:
     string nombre;
-    int programa;
-    int ID
-    float promedio;
-    int aprobadas;
+    vector<float> notas;
+    int creditos_aprobados;
+
 public:
-    Estudiante(string n, int prog, float prom, int A, int I){
-        nombre = n;
-        programa = prog;
-        promedio = prom;
-        aprobadas = A;
-        ID = I;
+    Estudiante(string nombre) {
+        this->nombre = nombre;
+        creditos_aprobados = 0;
     }
 
-    string getNombre() {
+    void agregarNota(float nota) {
+        notas.push_back(nota);
+        if (nota >= 3.0) {
+            creditos_aprobados += 3; // Ejemplo: cada materia vale 3 créditos
+        }
+    }
+
+    float calcularPromedio() const {
+        if (notas.empty()) return 0.0;
+        float suma = 0.0;
+        for (float n : notas) {
+            suma += n;
+        }
+        return suma / notas.size();
+    }
+
+    string getNombre() const {
         return nombre;
     }
-    int getPrograma() {
-        return programa;
-    }
-    float getPromedio() {
-        return promedio;
-    }
-    int getAprobados() {
-        return aprobadas;
-    }
-    int getID() {
-        return ID;
+
+    int getCreditos() const {
+        return creditos_aprobados;
     }
 
-    void setPrograma(int prog) {
-        if (prog > 0) {
-            programa = prog;
-        }
-        else {
-            cout << "Programa invalido" << endl;
-        }
+    void mostrarResumen() const {
+        cout << "Nombre: " << nombre << endl;
+        cout << "Promedio: " << calcularPromedio() << endl;
+        cout << "Creditos aprobados: " << creditos_aprobados << endl;
+        cout << "----------------------------" << endl;
     }
-    void setPromedio(float prom) {
-        if (prom >= 0.0 && prom <= 5.0) {
-            promedio = prom;
-        }
-        else {
-            cout << "Promedio invalido" << endl;
-        }
-    }
-    void setAprobadas(int A) {
-        if (A >= 0) {
-            aprobadas = A;
-        }
-        else {
-            cout << "Numero de materias aprobadas invalido" << endl;
-        }
-    }
-    void setID(int I) {
-        if (I > 0) {
-            ID = I;
-        }
-        else {
-            cout << "ID invalido" << endl;
-        }
-    }
-
-    void agregarcreditos() {
-        int creditos;
-        aprobadas += creditos;
-    }
-
-    void registronota() {
-        float nota;
-        int creditos;
-        promedio = ((promedio * aprobadas) + (nota * creditos)) / (aprobadas + creditos);
-        aprobadas += creditos;   
-    }
-
-    string obtenerresumen() {
-        return "nombre:" + nombre
-                + ", programa:" + to_string(programa)
-                + ", ID:" + to_string(ID)
-                + ", promedio:" + to_string(promedio)
-                + ", aprobadas:" + to_string(aprobadas);
-    }
-
-    bool grado(int creditos_requeridos) {
-        return (aprobadas >= creditos_requeridos);
-    }
-
 };
 
-main() {
+int main() {
+    // Se crea un conjunto de estudiantes
     vector<Estudiante> estudiantes;
-    estudiantes.push_back(estudiantes("Juan Perez", 101, 4.5, 30, 12345));
-    estudiantes.push_back(estudiantes("Maria Gomez", 102, 3.8, 25, 67890)); 
-    estudiantes.push_back(estudiantes("Luis Rodriguez", 103, 4.2, 28, 11223));
-    
-    estudiantes[0].registronota(4.9, 0.5);
-    estudiantes[1].agregarnota(2.2, 0);
-    estudiantes[2].agregarnota(3.5, 2.5);
 
-    cout<<"Resumen de estudiantes:"<<endl;
-    for (auto &e : estudiantes) {
-        cout<<e.obtenerresumen()<<endl;
+    // Registrar varios estudiantes
+    estudiantes.push_back(Estudiante("Juan Perez"));
+    estudiantes.push_back(Estudiante("Maria Gomez"));
+    estudiantes.push_back(Estudiante("Luis Rodriguez"));
+
+    // Simular registro de notas
+    estudiantes[0].agregarNota(4.5);
+    estudiantes[0].agregarNota(3.8);
+
+    estudiantes[1].agregarNota(2.9);
+    estudiantes[1].agregarNota(3.2);
+
+    estudiantes[2].agregarNota(4.0);
+    estudiantes[2].agregarNota(4.7);
+
+    // Mostrar resumen general de todos los estudiantes
+    cout << "\n=== RESUMEN DE ESTUDIANTES ===\n";
+    for (const Estudiante &e : estudiantes) {
+        e.mostrarResumen();
     }
 
+    // Calcular promedio general del grupo
     float suma_promedios = 0.0;
-    for (auto &e : estudiantes) suma_promedios += e.getPromedio();
+    for (const Estudiante &e : estudiantes) {
+        suma_promedios += e.calcularPromedio();
+    }
     float promedio_general = suma_promedios / estudiantes.size();
-    cout<<"\nPromedio general de la clase: "<<promedio_general<<endl;   
-    
+
+    cout << "Promedio general de todos los estudiantes: " << promedio_general << endl;
 
     return 0;
 }
