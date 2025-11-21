@@ -1,7 +1,0 @@
-REPORTE DE ESTUDIANTES
-----------------------
-Nombre: Juan Perez | Promedio: 4.55714 | Creditos aprobados: 35
-Nombre: Maria Gomez | Promedio: 3.62857 | Creditos aprobados: 28
-Nombre: Luis Rodriguez | Promedio: 4.1125 | Creditos aprobados: 32
-
-Promedio general de la clase: 4.0994

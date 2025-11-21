@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.10)
+project(GestionAcademica)
+
+# Especificar el estándar de C++
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Incluir directorio de encabezados
+include_directories(include)
+
+# Archivos fuente
+set(SOURCES
+    src/main.cpp
+    src/Estudiante.cpp
+)
+
+# Crear el ejecutable
+add_executable(gestion ${SOURCES})
