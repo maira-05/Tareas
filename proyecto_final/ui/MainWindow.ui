@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowTitle">
+   <string>Rastreador de Salud</string>
+  </property>
+
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout">
+
+    <item>
+     <widget class="QTableView" name="tableView"/>
+    </item>
+
+    <item>
+     <layout class="QHBoxLayout">
+      <item>
+       <widget class="QPushButton" name="addButton">
+        <property name="text">
+         <string>Agregar Registro</string>
+        </property>
+       </widget>
+      </item>
+
+      <item>
+       <widget class="QPushButton" name="exportButton">
+        <property name="text">
+         <string>Exportar CSV</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+
+   </layout>
+  </widget>
+
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
