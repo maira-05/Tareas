@@ -1,8 +1,9 @@
-#include "../include/CSVExporter.h"
+#include "CSVExporter.h"
 #include <QFile>
 #include <QTextStream>
 
-bool CSVExporter::exportRecords(const QVector<HealthRecord> &records, const QString &filePath)
+bool CSVExporter::exportRecords(const QVector<HealthRecord> &records,
+                                const QString &filePath)
 {
     QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))

@@ -8,7 +8,8 @@
 class CSVExporter
 {
 public:
-    static bool exportRecords(const QVector<HealthRecord> &records, const QString &filePath);
+    static bool exportRecords(const QVector<HealthRecord> &records,
+                              const QString &filePath);
 };
 
 #endif // CSVEXPORTER_H
