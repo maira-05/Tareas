@@ -1,4 +1,4 @@
-#include "RecordsModel.h"
+#include "../include/RecordsModel.h"
 
 RecordsModel::RecordsModel(QObject *parent)
     : QAbstractTableModel(parent)

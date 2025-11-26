@@ -1,4 +1,4 @@
-#include "CSVExporter.h"
+#include "../include/CSVExporter.h"
 #include <QFile>
 #include <QTextStream>
 

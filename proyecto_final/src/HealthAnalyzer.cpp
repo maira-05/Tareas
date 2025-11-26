@@ -1,4 +1,4 @@
-#include "HealthAnalyzer.h"
+#include "../include/HealthAnalyzer.h"
 
 double HealthAnalyzer::promedioSistolica(const QVector<HealthRecord> &records)
 {

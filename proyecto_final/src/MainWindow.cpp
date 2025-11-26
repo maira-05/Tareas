@@ -1,7 +1,7 @@
-#include "MainWindow.h"
-#include "ui_MainWindow.h"
-#include "RecordDialog.h"
-#include "CSVExporter.h"
+#include "../include/MainWindow.h"
+#include "../include/ui_MainWindow.h"
+#include "../include/RecordDialog.h"
+#include "../include/CSVExporter.h"
 #include <QMessageBox>
 
 MainWindow::MainWindow(int userId, DatabaseManager *db, QWidget *parent)

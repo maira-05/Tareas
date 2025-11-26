@@ -1,5 +1,5 @@
-#include "RecordDialog.h"
-#include "ui_RecordDialog.h"
+#include "../include/RecordDialog.h"
+#include "../include/ui_RecordDialog.h"
 #include <QDateTime>
 
 RecordDialog::RecordDialog(QWidget *parent)

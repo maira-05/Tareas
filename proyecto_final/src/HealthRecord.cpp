@@ -1,4 +1,4 @@
-#include "HealthRecord.h"
+#include "../include/HealthRecord.h"
 
 HealthRecord::HealthRecord()
     : m_id(-1),
