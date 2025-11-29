@@ -1,4 +1,4 @@
-#include "../include/DatabaseManager.h"
+#include "/home/maira/Tareas/proyecto_final/include/DatabaseManager.h"
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QCryptographicHash>
