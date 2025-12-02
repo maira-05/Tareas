@@ -1,5 +1,5 @@
 #include "../include/LoginDialog.h"
-#include "../include/ui_LoginDialog.h"
+#include "ui_LoginDialog.h"
 #include <QMessageBox>
 
 LoginDialog::LoginDialog(DatabaseManager *db, QWidget *parent)
