@@ -1,0 +1,2 @@
+/home/maira/Tareas/proyecto_final/build/CMakeFiles/edit_cache.dir
+/home/maira/Tareas/proyecto_final/build/CMakeFiles/rebuild_cache.dir
