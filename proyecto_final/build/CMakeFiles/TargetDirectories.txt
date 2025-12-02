@@ -1,2 +1,5 @@
+/home/maira/Tareas/proyecto_final/build/CMakeFiles/HealthTracker.dir
 /home/maira/Tareas/proyecto_final/build/CMakeFiles/edit_cache.dir
 /home/maira/Tareas/proyecto_final/build/CMakeFiles/rebuild_cache.dir
+/home/maira/Tareas/proyecto_final/build/CMakeFiles/HealthTracker_autogen_timestamp_deps.dir
+/home/maira/Tareas/proyecto_final/build/CMakeFiles/HealthTracker_autogen.dir

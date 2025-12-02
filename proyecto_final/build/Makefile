@@ -116,6 +116,69 @@ depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+#=============================================================================
+# Target rules for targets named HealthTracker
+
+# Build rule for target.
+HealthTracker: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 HealthTracker
+.PHONY : HealthTracker
+
+# fast build rule for target.
+HealthTracker/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HealthTracker.dir/build.make CMakeFiles/HealthTracker.dir/build
+.PHONY : HealthTracker/fast
+
+#=============================================================================
+# Target rules for targets named HealthTracker_autogen_timestamp_deps
+
+# Build rule for target.
+HealthTracker_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 HealthTracker_autogen_timestamp_deps
+.PHONY : HealthTracker_autogen_timestamp_deps
+
+# fast build rule for target.
+HealthTracker_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HealthTracker_autogen_timestamp_deps.dir/build.make CMakeFiles/HealthTracker_autogen_timestamp_deps.dir/build
+.PHONY : HealthTracker_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named HealthTracker_autogen
+
+# Build rule for target.
+HealthTracker_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 HealthTracker_autogen
+.PHONY : HealthTracker_autogen
+
+# fast build rule for target.
+HealthTracker_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HealthTracker_autogen.dir/build.make CMakeFiles/HealthTracker_autogen.dir/build
+.PHONY : HealthTracker_autogen/fast
+
+HealthTracker_autogen/mocs_compilation.o: HealthTracker_autogen/mocs_compilation.cpp.o
+.PHONY : HealthTracker_autogen/mocs_compilation.o
+
+# target to build an object file
+HealthTracker_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HealthTracker.dir/build.make CMakeFiles/HealthTracker.dir/HealthTracker_autogen/mocs_compilation.cpp.o
+.PHONY : HealthTracker_autogen/mocs_compilation.cpp.o
+
+HealthTracker_autogen/mocs_compilation.i: HealthTracker_autogen/mocs_compilation.cpp.i
+.PHONY : HealthTracker_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+HealthTracker_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HealthTracker.dir/build.make CMakeFiles/HealthTracker.dir/HealthTracker_autogen/mocs_compilation.cpp.i
+.PHONY : HealthTracker_autogen/mocs_compilation.cpp.i
+
+HealthTracker_autogen/mocs_compilation.s: HealthTracker_autogen/mocs_compilation.cpp.s
+.PHONY : HealthTracker_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+HealthTracker_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HealthTracker.dir/build.make CMakeFiles/HealthTracker.dir/HealthTracker_autogen/mocs_compilation.cpp.s
+.PHONY : HealthTracker_autogen/mocs_compilation.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -124,6 +187,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... HealthTracker_autogen"
+	@echo "... HealthTracker_autogen_timestamp_deps"
+	@echo "... HealthTracker"
+	@echo "... HealthTracker_autogen/mocs_compilation.o"
+	@echo "... HealthTracker_autogen/mocs_compilation.i"
+	@echo "... HealthTracker_autogen/mocs_compilation.s"
 .PHONY : help
 
 
