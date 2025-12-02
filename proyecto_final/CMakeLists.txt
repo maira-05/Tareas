@@ -7,7 +7,7 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Gui Widgets Sql REQUIRED)
 
-# agrega la carpeta include para que el compilador encuentre headers
+# incluye carpeta include/
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 # fuentes
@@ -24,6 +24,7 @@ set(SOURCES
     src/DatabaseManager.cpp
 )
 
+# headers
 set(HEADERS
     include/MainWindow.h
     include/LoginDialog.h
@@ -36,13 +37,14 @@ set(HEADERS
     include/DatabaseManager.h
 )
 
+# ui files
 set(UIS
     ui/MainWindow.ui
     ui/LoginDialog.ui
     ui/RecordDialog.ui
 )
 
-# resources
+# recursos
 set(RESOURCES
     resources/app_resources.qrc
 )

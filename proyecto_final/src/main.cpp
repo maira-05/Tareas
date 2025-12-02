@@ -1,25 +1,21 @@
 #include <QApplication>
-#include "../include/LoginDialog.h"
-#include "../include/MainWindow.h"
-#include "../include/DatabaseManager.h"
+#include "DatabaseManager.h"
+#include "LoginDialog.h"
+#include "MainWindow.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    // Crear base de datos
-    DatabaseManager db;
+    DatabaseManager db("health.db");
 
-    // --- Mostrar login ---
-    LoginDialog loginDialog(&db);   // ✔ PASAR BASE DE DATOS
-    if (loginDialog.exec() != QDialog::Accepted) {
-        return 0; // Usuario canceló
-    }
+    LoginDialog login(&db);
+    if (login.exec() != QDialog::Accepted)
+        return 0;
 
-    int userId = loginDialog.getUserId();
+    int userId = login.getUserId();
 
-    // --- Abrir ventana principal ---
-    MainWindow w(userId, &db);     // ✔ PASAR USERID Y DB
+    MainWindow w(userId, &db);
     w.show();
 
     return a.exec();
