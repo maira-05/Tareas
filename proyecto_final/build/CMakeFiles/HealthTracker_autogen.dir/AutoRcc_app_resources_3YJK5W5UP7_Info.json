@@ -1,0 +1,23 @@
+{
+	"BUILD_DIR" : "/home/yaime07/alse_1/tareas_mai/proyecto_final/build/HealthTracker_autogen",
+	"CMAKE_BINARY_DIR" : "/home/yaime07/alse_1/tareas_mai/proyecto_final/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/yaime07/alse_1/tareas_mai/proyecto_final/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/yaime07/alse_1/tareas_mai/proyecto_final",
+	"CMAKE_SOURCE_DIR" : "/home/yaime07/alse_1/tareas_mai/proyecto_final",
+	"INCLUDE_DIR" : "/home/yaime07/alse_1/tareas_mai/proyecto_final/build/HealthTracker_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/yaime07/alse_1/tareas_mai/proyecto_final/resources/images/background.jpg",
+		"/home/yaime07/alse_1/tareas_mai/proyecto_final/resources/icons/app_icon.png"
+	],
+	"LOCK_FILE" : "/home/yaime07/alse_1/tareas_mai/proyecto_final/build/CMakeFiles/HealthTracker_autogen.dir/AutoRcc_app_resources_3YJK5W5UP7_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "app_resources" ],
+	"OUTPUT_CHECKSUM" : "3YJK5W5UP7",
+	"OUTPUT_NAME" : "qrc_app_resources.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib/qt5/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/yaime07/alse_1/tareas_mai/proyecto_final/build/CMakeFiles/HealthTracker_autogen.dir/AutoRcc_app_resources_3YJK5W5UP7_Used.txt",
+	"SOURCE" : "/home/yaime07/alse_1/tareas_mai/proyecto_final/resources/app_resources.qrc",
+	"VERBOSITY" : 0
+}

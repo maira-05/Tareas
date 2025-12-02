@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <QIcon>
 #include "DatabaseManager.h"
 #include "LoginDialog.h"
 #include "MainWindow.h"
@@ -6,6 +7,9 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    // Ícono de la aplicación
+    a.setWindowIcon(QIcon(":/icon.png"));
 
     DatabaseManager db("health.db");
 

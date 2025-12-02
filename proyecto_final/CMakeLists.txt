@@ -5,12 +5,15 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
+# IMPORTANTE: Ruta real de los .ui
+set(CMAKE_AUTOUIC_SEARCH_PATHS
+    ${CMAKE_SOURCE_DIR}/ui
+)
+
 find_package(Qt5 COMPONENTS Core Gui Widgets Sql REQUIRED)
 
-# incluye carpeta include/
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-# fuentes
 set(SOURCES
     src/main.cpp
     src/MainWindow.cpp
@@ -24,7 +27,6 @@ set(SOURCES
     src/DatabaseManager.cpp
 )
 
-# headers
 set(HEADERS
     include/MainWindow.h
     include/LoginDialog.h
@@ -37,14 +39,12 @@ set(HEADERS
     include/DatabaseManager.h
 )
 
-# ui files
 set(UIS
     ui/MainWindow.ui
     ui/LoginDialog.ui
     ui/RecordDialog.ui
 )
 
-# recursos
 set(RESOURCES
     resources/app_resources.qrc
 )
