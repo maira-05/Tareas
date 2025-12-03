@@ -2,6 +2,8 @@
 #include <QSqlQuery>
 #include <QVariant>
 #include <QDebug>
+#include <QSqlError>
+
 
 DatabaseManager::DatabaseManager(const QString &path)
 {
