@@ -5,11 +5,7 @@
 	"CMAKE_CURRENT_SOURCE_DIR" : "/home/yaime07/alse_1/tareas_mai/proyecto_final",
 	"CMAKE_SOURCE_DIR" : "/home/yaime07/alse_1/tareas_mai/proyecto_final",
 	"INCLUDE_DIR" : "/home/yaime07/alse_1/tareas_mai/proyecto_final/build/HealthTracker_autogen/include",
-	"INPUTS" : 
-	[
-		"/home/yaime07/alse_1/tareas_mai/proyecto_final/resources/images/background.jpg",
-		"/home/yaime07/alse_1/tareas_mai/proyecto_final/resources/icons/app_icon.png"
-	],
+	"INPUTS" : [ "/home/yaime07/alse_1/tareas_mai/proyecto_final/resources/icon.jpg" ],
 	"LOCK_FILE" : "/home/yaime07/alse_1/tareas_mai/proyecto_final/build/CMakeFiles/HealthTracker_autogen.dir/AutoRcc_app_resources_3YJK5W5UP7_Lock.lock",
 	"MULTI_CONFIG" : false,
 	"OPTIONS" : [ "-name", "app_resources" ],

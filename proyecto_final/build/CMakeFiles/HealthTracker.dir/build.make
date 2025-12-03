@@ -71,8 +71,7 @@ include CMakeFiles/HealthTracker.dir/flags.make
 
 HealthTracker_autogen/3YJK5W5UP7/qrc_app_resources.cpp: ../resources/app_resources.qrc
 HealthTracker_autogen/3YJK5W5UP7/qrc_app_resources.cpp: CMakeFiles/HealthTracker_autogen.dir/AutoRcc_app_resources_3YJK5W5UP7_Info.json
-HealthTracker_autogen/3YJK5W5UP7/qrc_app_resources.cpp: ../resources/images/background.jpg
-HealthTracker_autogen/3YJK5W5UP7/qrc_app_resources.cpp: ../resources/icons/app_icon.png
+HealthTracker_autogen/3YJK5W5UP7/qrc_app_resources.cpp: ../resources/icon.jpg
 HealthTracker_autogen/3YJK5W5UP7/qrc_app_resources.cpp: /usr/lib/qt5/bin/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/yaime07/alse_1/tareas_mai/proyecto_final/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for resources/app_resources.qrc"
 	/usr/bin/cmake -E cmake_autorcc /home/yaime07/alse_1/tareas_mai/proyecto_final/build/CMakeFiles/HealthTracker_autogen.dir/AutoRcc_app_resources_3YJK5W5UP7_Info.json 

@@ -1,7 +1,6 @@
 #ifndef HEALTHRECORD_H
 #define HEALTHRECORD_H
 
-#include <QString>
 #include <QDateTime>
 
 class HealthRecord
@@ -26,13 +25,13 @@ public:
     void setGlucoseLevel(double g);
 
 private:
-    int m_id;
-    int m_userId;
+    int m_id = 0;
+    int m_userId = 0;
     QDateTime m_dateTime;
-    double m_weight;
-    int m_systolic;
-    int m_diastolic;
-    double m_glucoseLevel;
+    double m_weight = 0.0;
+    int m_systolic = 0;
+    int m_diastolic = 0;
+    double m_glucoseLevel = 0.0;
 };
 
 #endif // HEALTHRECORD_H

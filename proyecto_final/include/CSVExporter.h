@@ -1,15 +1,15 @@
 #ifndef CSVEXPORTER_H
 #define CSVEXPORTER_H
 
-#include <QString>
-#include <QVector>
 #include "HealthRecord.h"
+#include <QVector>
+#include <QString>
 
 class CSVExporter
 {
 public:
-    static bool exportRecords(const QVector<HealthRecord> &records,
-                              const QString &filePath);
+    bool exportRecords(const QVector<HealthRecord> &records,
+                       const QString &filePath);
 };
 
-#endif // CSVEXPORTER_H
+#endif

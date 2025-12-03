@@ -2,25 +2,27 @@
 #define RECORDSMODEL_H
 
 #include <QAbstractTableModel>
-#include <QVector>
-#include "HealthRecord.h"
+#include <QList>
+#include "DatabaseManager.h"
 
 class RecordsModel : public QAbstractTableModel
 {
     Q_OBJECT
-
 public:
-    RecordsModel(QObject *parent = nullptr);
+    RecordsModel(DatabaseManager *db, int userId, QObject *parent = nullptr);
 
-    void setRecords(const QVector<HealthRecord> &records);
-
-    int rowCount(const QModelIndex &parent) const override;
-    int columnCount(const QModelIndex &parent) const override;
-    QVariant data(const QModelIndex &index, int role) const override;
+    int rowCount(const QModelIndex&) const override;
+    int columnCount(const QModelIndex&) const override;
+    QVariant data(const QModelIndex &, int) const override;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
 
+    void reload();
+    void setRecords(const QList<HealthRecord> &records);
+
 private:
-    QVector<HealthRecord> m_records;
+    DatabaseManager* m_db;
+    int m_userId;
+    QList<HealthRecord> m_records;
 };
 
-#endif // RECORDSMODEL_H
+#endif

@@ -1,14 +1,23 @@
 #include "../include/RecordsModel.h"
 
-RecordsModel::RecordsModel(QObject *parent)
-    : QAbstractTableModel(parent)
-{}
+RecordsModel::RecordsModel(DatabaseManager *db, int userId, QObject *parent)
+    : QAbstractTableModel(parent),
+      m_db(db),
+      m_userId(userId)
+{
+    reload();
+}
 
-void RecordsModel::setRecords(const QVector<HealthRecord> &records)
+void RecordsModel::setRecords(const QList<HealthRecord> &records)
 {
     beginResetModel();
     m_records = records;
     endResetModel();
+}
+
+void RecordsModel::reload()
+{
+    setRecords(m_db->getUserRecords(m_userId));
 }
 
 int RecordsModel::rowCount(const QModelIndex &) const
@@ -18,7 +27,7 @@ int RecordsModel::rowCount(const QModelIndex &) const
 
 int RecordsModel::columnCount(const QModelIndex &) const
 {
-    return 6; // fecha, peso, sistólica, diastólica, glucosa
+    return 5; // fecha, peso, sistólica, diastólica, glucosa
 }
 
 QVariant RecordsModel::data(const QModelIndex &index, int role) const

@@ -299,7 +299,7 @@
 		]
 	],
 	"UIC_OPTIONS" : [],
-	"UIC_SEARCH_PATHS" : [],
+	"UIC_SEARCH_PATHS" : [ "/home/yaime07/alse_1/tareas_mai/proyecto_final/ui" ],
 	"UIC_SKIP" : [],
 	"UIC_UI_FILES" : [],
 	"VERBOSITY" : 0
