@@ -1,4 +1,5 @@
-/home/yaime07/alse_1/tareas_mai/proyecto_final/build/CMakeFiles/HealthTracker.dir
-/home/yaime07/alse_1/tareas_mai/proyecto_final/build/CMakeFiles/edit_cache.dir
-/home/yaime07/alse_1/tareas_mai/proyecto_final/build/CMakeFiles/rebuild_cache.dir
-/home/yaime07/alse_1/tareas_mai/proyecto_final/build/CMakeFiles/HealthTracker_autogen.dir
+/home/maira/Tareas/proyecto_final/build/CMakeFiles/HealthTracker.dir
+/home/maira/Tareas/proyecto_final/build/CMakeFiles/edit_cache.dir
+/home/maira/Tareas/proyecto_final/build/CMakeFiles/rebuild_cache.dir
+/home/maira/Tareas/proyecto_final/build/CMakeFiles/HealthTracker_autogen_timestamp_deps.dir
+/home/maira/Tareas/proyecto_final/build/CMakeFiles/HealthTracker_autogen.dir

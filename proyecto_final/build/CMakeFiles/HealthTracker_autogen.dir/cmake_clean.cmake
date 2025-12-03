@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "HealthTracker_autogen/include/ui/ui_MainWindow.h"
   "HealthTracker_autogen/include/ui/ui_RecordDialog.h"
   "HealthTracker_autogen/mocs_compilation.cpp"
+  "HealthTracker_autogen/timestamp"
 )
 
 # Per-language clean rules from dependency scanning.
