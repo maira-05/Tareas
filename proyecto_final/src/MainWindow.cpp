@@ -2,6 +2,8 @@
 #include "ui_MainWindow.h"
 #include "RecordDialog.h"
 #include "CSVExporter.h"
+#include <QMessageBox>
+#include <QIcon>
 
 MainWindow::MainWindow(int userId, DatabaseManager *db, QWidget *parent)
     : QMainWindow(parent)
@@ -11,6 +13,10 @@ MainWindow::MainWindow(int userId, DatabaseManager *db, QWidget *parent)
 {
     ui->setupUi(this);
 
+    // ✔️ Establecer ícono de la aplicación
+    setWindowIcon(QIcon(":/icon.jpg"));
+
+    // ✔️ Modelo de registros
     m_model = new RecordsModel(m_db, m_userId, this);
     ui->tableView->setModel(m_model);
     m_model->reload();
@@ -24,10 +30,11 @@ MainWindow::~MainWindow()
 void MainWindow::on_addButton_clicked()
 {
     RecordDialog dlg(this);
+
     if (dlg.exec() == QDialog::Accepted)
     {
         HealthRecord record = dlg.getRecord();
-        record.setUserId(m_userId);   // ✔️ CORRECTO
+        record.setUserId(m_userId);
 
         m_db->addRecord(record);
         m_model->reload();

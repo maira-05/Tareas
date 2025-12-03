@@ -14,7 +14,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(int userId, DatabaseManager* db, QWidget *parent = nullptr);
+    explicit MainWindow(int userId, DatabaseManager *db, QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
@@ -23,9 +23,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    RecordsModel* m_model;
-    DatabaseManager* m_db;
     int m_userId;
+    DatabaseManager *m_db;
+    RecordsModel *m_model;
 };
 
 #endif // MAINWINDOW_H

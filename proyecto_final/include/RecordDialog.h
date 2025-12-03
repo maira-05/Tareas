@@ -23,7 +23,7 @@ private slots:
 
 private:
     Ui::RecordDialog *ui;
-    HealthRecord record;
+    HealthRecord m_record;
 };
 
-#endif
+#endif // RECORDDIALOG_H
