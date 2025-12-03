@@ -10,6 +10,27 @@ DatabaseManager::DatabaseManager(const QString &path)
 
     if (!m_db.open())
         qDebug() << "No se pudo abrir la base de datos";
+            // ───────────────────────────────────────────────
+    // VERIFICAR QUE LA BD Y LA TABLA USERS SE LEEN BIEN
+    // ───────────────────────────────────────────────
+    if (!m_db.tables().contains("users")) {
+        qDebug() << "⚠ ERROR: La tabla 'users' NO existe en la BD.";
+    } else {
+        qDebug() << "✔ Tabla 'users' encontrada.";
+
+        QSqlQuery test;
+        if (!test.exec("SELECT id, username, password FROM users")) {
+            qDebug() << "⚠ ERROR consultando la tabla users:" << test.lastError();
+        } else {
+            qDebug() << "Contenido de users:";
+            while (test.next()) {
+                qDebug() << "ID:" << test.value(0).toInt()
+                         << "Usuario:" << test.value(1).toString()
+                         << "Password:" << test.value(2).toString();
+            }
+        }
+    }
+
 }
 
 bool DatabaseManager::addRecord(const HealthRecord &record)
