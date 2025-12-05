@@ -29,8 +29,6 @@ file(REMOVE_RECURSE
   "HealthTracker"
   "HealthTracker.pdb"
   "HealthTracker_autogen/3YJK5W5UP7/qrc_app_resources.cpp"
-  "HealthTracker_autogen/mocs_compilation.cpp"
-  "HealthTracker_autogen/timestamp"
 )
 
 # Per-language clean rules from dependency scanning.
