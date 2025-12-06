@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableView>
@@ -27,6 +28,7 @@ public:
     QWidget *centralwidget;
     QVBoxLayout *vboxLayout;
     QTableView *tableView;
+    QLabel *labelStats;
     QHBoxLayout *hboxLayout;
     QPushButton *addButton;
     QPushButton *exportButton;
@@ -43,6 +45,11 @@ public:
         tableView->setObjectName(QString::fromUtf8("tableView"));
 
         vboxLayout->addWidget(tableView);
+
+        labelStats = new QLabel(centralwidget);
+        labelStats->setObjectName(QString::fromUtf8("labelStats"));
+
+        vboxLayout->addWidget(labelStats);
 
         hboxLayout = new QHBoxLayout();
         hboxLayout->setObjectName(QString::fromUtf8("hboxLayout"));
@@ -69,6 +76,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Rastreador de Salud", nullptr));
+        labelStats->setText(QCoreApplication::translate("MainWindow", "Estad\303\255sticas:", nullptr));
         addButton->setText(QCoreApplication::translate("MainWindow", "Agregar Registro", nullptr));
         exportButton->setText(QCoreApplication::translate("MainWindow", "Exportar CSV", nullptr));
     } // retranslateUi
