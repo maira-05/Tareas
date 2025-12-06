@@ -9,10 +9,21 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout">
 
+    <!-- Tabla principal -->
     <item>
      <widget class="QTableView" name="tableView"/>
     </item>
 
+    <!-- ✔️ NUEVO: Label para estadísticas -->
+    <item>
+     <widget class="QLabel" name="labelStats">
+      <property name="text">
+       <string>Estadísticas:</string>
+      </property>
+     </widget>
+    </item>
+
+    <!-- Botones -->
     <item>
      <layout class="QHBoxLayout">
       <item>
