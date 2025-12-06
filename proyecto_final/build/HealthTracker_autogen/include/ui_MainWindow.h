@@ -14,6 +14,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableView>
@@ -30,6 +31,15 @@ public:
     QTableView *tableView;
     QLabel *labelStats;
     QHBoxLayout *hboxLayout;
+    QVBoxLayout *vboxLayout1;
+    QLabel *labelHeight;
+    QLineEdit *lineEditHeight;
+    QVBoxLayout *vboxLayout2;
+    QLabel *labelWeight;
+    QLineEdit *lineEditWeight;
+    QVBoxLayout *vboxLayout3;
+    QLabel *labelBMI;
+    QHBoxLayout *hboxLayout1;
     QPushButton *addButton;
     QPushButton *exportButton;
 
@@ -53,18 +63,63 @@ public:
 
         hboxLayout = new QHBoxLayout();
         hboxLayout->setObjectName(QString::fromUtf8("hboxLayout"));
+        vboxLayout1 = new QVBoxLayout();
+        vboxLayout1->setObjectName(QString::fromUtf8("vboxLayout1"));
+        labelHeight = new QLabel(centralwidget);
+        labelHeight->setObjectName(QString::fromUtf8("labelHeight"));
+
+        vboxLayout1->addWidget(labelHeight);
+
+        lineEditHeight = new QLineEdit(centralwidget);
+        lineEditHeight->setObjectName(QString::fromUtf8("lineEditHeight"));
+
+        vboxLayout1->addWidget(lineEditHeight);
+
+
+        hboxLayout->addLayout(vboxLayout1);
+
+        vboxLayout2 = new QVBoxLayout();
+        vboxLayout2->setObjectName(QString::fromUtf8("vboxLayout2"));
+        labelWeight = new QLabel(centralwidget);
+        labelWeight->setObjectName(QString::fromUtf8("labelWeight"));
+
+        vboxLayout2->addWidget(labelWeight);
+
+        lineEditWeight = new QLineEdit(centralwidget);
+        lineEditWeight->setObjectName(QString::fromUtf8("lineEditWeight"));
+
+        vboxLayout2->addWidget(lineEditWeight);
+
+
+        hboxLayout->addLayout(vboxLayout2);
+
+        vboxLayout3 = new QVBoxLayout();
+        vboxLayout3->setObjectName(QString::fromUtf8("vboxLayout3"));
+        labelBMI = new QLabel(centralwidget);
+        labelBMI->setObjectName(QString::fromUtf8("labelBMI"));
+
+        vboxLayout3->addWidget(labelBMI);
+
+
+        hboxLayout->addLayout(vboxLayout3);
+
+
+        vboxLayout->addLayout(hboxLayout);
+
+        hboxLayout1 = new QHBoxLayout();
+        hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
         addButton = new QPushButton(centralwidget);
         addButton->setObjectName(QString::fromUtf8("addButton"));
 
-        hboxLayout->addWidget(addButton);
+        hboxLayout1->addWidget(addButton);
 
         exportButton = new QPushButton(centralwidget);
         exportButton->setObjectName(QString::fromUtf8("exportButton"));
 
-        hboxLayout->addWidget(exportButton);
+        hboxLayout1->addWidget(exportButton);
 
 
-        vboxLayout->addLayout(hboxLayout);
+        vboxLayout->addLayout(hboxLayout1);
 
         MainWindow->setCentralWidget(centralwidget);
 
@@ -77,6 +132,9 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Rastreador de Salud", nullptr));
         labelStats->setText(QCoreApplication::translate("MainWindow", "Estad\303\255sticas:", nullptr));
+        labelHeight->setText(QCoreApplication::translate("MainWindow", "Altura (cm):", nullptr));
+        labelWeight->setText(QCoreApplication::translate("MainWindow", "Peso (kg):", nullptr));
+        labelBMI->setText(QCoreApplication::translate("MainWindow", "IMC: --", nullptr));
         addButton->setText(QCoreApplication::translate("MainWindow", "Agregar Registro", nullptr));
         exportButton->setText(QCoreApplication::translate("MainWindow", "Exportar CSV", nullptr));
     } // retranslateUi
