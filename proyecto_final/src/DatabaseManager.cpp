@@ -12,7 +12,7 @@ DatabaseManager::DatabaseManager(const QString &path)
 
     if (!m_db.open())
         qDebug() << "No se pudo abrir la base de datos";
-            // ───────────────────────────────────────────────
+    // ───────────────────────────────────────────────
     // VERIFICAR QUE LA BD Y LA TABLA USERS SE LEEN BIEN
     // ───────────────────────────────────────────────
     if (!m_db.tables().contains("users")) {
